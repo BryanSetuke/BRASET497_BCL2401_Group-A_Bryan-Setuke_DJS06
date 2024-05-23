@@ -1,31 +1,31 @@
 // A list of provinces:
 const provinces = [
-  "Western Cape",
-  "Gauteng",
-  "Northern Cape",
-  "Eastern Cape",
-  "KwaZulu-Natal",
-  "Free State",
+    "Western Cape",
+    "Gauteng",
+    "Northern Cape",
+    "Eastern Cape",
+    "KwaZulu-Natal",
+    "Free State",
 ];
 
 // A list of names:
 const names = [
-  "Ashwin",
-  "Sibongile",
-  "Jan-Hendrik",
-  "Sifso",
-  "Shailen",
-  "Frikkie",
+    "Ashwin",
+    "Sibongile",
+    "Jan-Hendrik",
+    "Sifso",
+    "Shailen",
+    "Frikkie",
 ];
 
 // A list of products with prices:
 const products = [
-  { product: "banana", price: "2" },
-  { product: "mango", price: 6 },
-  { product: "potato", price: " " },
-  { product: "avocado", price: "8" },
-  { product: "coffee", price: 10 },
-  { product: "tea", price: "" },
+    { product: "banana", price: "2" },
+    { product: "mango", price: 6 },
+    { product: "potato", price: " " },
+    { product: "avocado", price: "8" },
+    { product: "coffee", price: 10 },
+    { product: "tea", price: "" },
 ];
 
 // forEach
@@ -48,7 +48,7 @@ console.log(provinces);
 
 // Filtering Cape
 const provincesWithoutCape = provinces.filter(
-  (province) => !province.includes("Cape")
+    (province) => !province.includes("Cape")
 );
 console.log(provincesWithoutCape.length);
 
@@ -60,8 +60,8 @@ console.log(hasSIncludes);
 
 // Creating Object Mapping:
 const nameProvinceMap = names.reduce((acc, name, index) => {
-  acc[name] = provinces[index] || "No Province Assigned"; // Assign default if no province
-  return acc;
+    acc[name] = provinces[index] || "No Province Assigned"; // Assign default if no province
+    return acc;
 }, {});
 console.log(nameProvinceMap);
 
@@ -73,11 +73,11 @@ console.log(products.filter((product) => product.product.length <= 5));
 
 // Price Manipulation:
 const total = products
-  .filter((product) => product.price) // Filter products with prices
-  .reduce((acc, product) => {
-    acc += parseInt(product.price); // Convert price to number and add to accumulator
-    return acc;
-  }, 0);
+    .filter((product) => product.price) // Filter products with prices
+    .reduce((acc, product) => {
+        acc += parseInt(product.price); // Convert price to number and add to accumulator
+        return acc;
+    }, 0);
 console.log(`Total Price: ${total}`);
 
 // Concatenate Product Names:
@@ -85,27 +85,27 @@ console.log(products.reduce((acc, product) => acc + product.product, "")); // Co
 
 // Find Extremes in Prices:
 const priceExtremes = products.reduce((acc, product) => {
-  const price = parseInt(product.price);
-  if (!acc.highest || price > acc.highest) {
-    acc.highest = price;
-  }
-  if (!acc.lowest || price < acc.lowest) {
-    acc.lowest = price;
-  }
-  return acc;
+    const price = parseInt(product.price);
+    if (!acc.highest || price > acc.highest) {
+        acc.highest = price;
+    }
+    if (!acc.lowest || price < acc.lowest) {
+        acc.lowest = price;
+    }
+    return acc;
 }, {});
 console.log(
-  `Highest: ${priceExtremes.highest}. Lowest: ${priceExtremes.lowest}`
+    `Highest: ${priceExtremes.highest}. Lowest: ${priceExtremes.lowest}`
 );
 
 // Object Transformation:
 const transformedProducts = Object.entries(
-  products.reduce((acc, product) => {
-    acc[product.product] = {
-      name: product.product,
-      cost: parseInt(product.price) || 0,
-    };
-    return acc;
-  }, {})
+    products.reduce((acc, product) => {
+        acc[product.product] = {
+            name: product.product,
+            cost: parseInt(product.price) || 0,
+        };
+        return acc;
+    }, {})
 ).map(([key, value]) => ({ [key]: value })); // Destructuring and wrapping in object
 console.log(transformedProducts);
